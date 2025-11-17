@@ -5,219 +5,243 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ProjexLab — Buy Final-Year Projects</title>
   <meta name="description" content="ProjexLab — curated final-year projects for CSE students. Buy source code, PPT, report, video and setup guide." />
+  <meta name="theme-color" content="#071426">
 
   <style>
-    /* ========== Simple Utility & Reset ========== */
+    /* ---------- VARIABLES & RESET ---------- */
     :root{
-      --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#6ee7b7; --glass: rgba(255,255,255,0.03);
-      --glass-2: rgba(255,255,255,0.02);
-      --max-w:1100px;
+      --bg-1:#061021; --bg-2:#081428; --card:#071427; --muted:#9aa4b2;
+      --accent1:#3b82f6; --accent2:#06b6d4; --accent3:#6ee7b7;
+      --glass: rgba(255,255,255,0.03); --glass-2: rgba(255,255,255,0.02);
+      --max-w:1150px; --radius:14px; --glass-border: rgba(255,255,255,0.05);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%; margin:0; background:linear-gradient(180deg,#061021 0%, #081428 100%); color:#e6eef6}
-    a{color:var(--accent); text-decoration:none}
-    img{max-width:100%; display:block}
-    .container{max-width:var(--max-w); margin:0 auto;padding:24px}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;background:linear-gradient(180deg,var(--bg-1) 0%, var(--bg-2) 100%);color:#e6eef6;-webkit-font-smoothing:antialiased}
+    a{color:var(--accent2);text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:var(--max-w);margin:0 auto;padding:22px}
 
-    /* ========== Nav ========== */
-    header{backdrop-filter: blur(6px); position:sticky; top:0; z-index:40}
-    .nav{display:flex; gap:16px; align-items:center; justify-content:space-between; padding:12px 0}
-    .brand{display:flex; gap:12px; align-items:center}
-    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#0ea5a4,#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700}
-    nav a{margin-left:14px;color:var(--muted)}
-    .cta{background:linear-gradient(90deg,#10b981,#06b6d4); padding:8px 14px;border-radius:10px;color:#02201d;font-weight:600}
+    /* ---------- TOP NAV ---------- */
+    header{position:sticky;top:12px;z-index:60;padding:8px 0}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;backdrop-filter: blur(8px);padding:12px;border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent2),var(--accent1));display:flex;align-items:center;justify-content:center;font-weight:800;color:#02201d;box-shadow:0 6px 20px rgba(3,7,18,0.6)}
+    .brand h1{font-size:18px;margin:0}
+    nav a{margin-left:12px;color:var(--muted);font-weight:600}
+    .cta{padding:8px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent3),var(--accent2));color:#01201a;font-weight:700;border:none;cursor:pointer;box-shadow:0 8px 30px rgba(3,15,30,0.45)}
+    .nav-right{display:flex;gap:12px;align-items:center}
 
-    /* ========== Hero ========== */
-    .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;padding:36px 0}
-    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:28px; border-radius:14px}
-    .hero h1{font-size:28px;margin:0 0 8px}
-    .hero p{color:var(--muted); margin:0 0 18px}
-    .searchbar{display:flex; gap:8px}
-    .searchbar input{flex:1;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+    /* ---------- HERO ---------- */
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:start;padding:36px 0}
+    .hero-card{padding:26px;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid var(--glass-border);box-shadow:0 8px 40px rgba(2,6,15,0.6)}
+    .hero h2{font-size:28px;margin-bottom:8px}
+    .hero p{color:var(--muted);margin-bottom:16px;line-height:1.5}
+    .searchbar{display:flex;gap:10px}
+    .searchbar input{flex:1;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;outline:none}
     .pill-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-    .pill{padding:8px 10px;background:var(--glass);border-radius:999px;color:var(--muted);font-size:13px;cursor:pointer}
+    .pill{padding:8px 12px;border-radius:999px;background:linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.006));color:var(--muted);font-size:13px;cursor:pointer;border:1px solid rgba(255,255,255,0.02)}
+    .pill.pill-active{background:linear-gradient(90deg,var(--accent3),var(--accent2));color:#04201b;font-weight:700;transform:translateY(-2px);box-shadow:0 8px 28px rgba(6,22,32,0.45)}
 
-    /* ========== Featured Projects ========== */
-    .featured{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
-    .card{background:var(--card);border-radius:12px;padding:12px}
-    .card h3{margin:0;font-size:16px}
-    .meta{color:var(--muted);font-size:13px;margin-top:6px}
-    .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
-    .tag{background:var(--glass-2);padding:6px 8px;border-radius:8px;font-size:12px;color:var(--muted)}
+    /* ---------- FEATURED / ASIDE ---------- */
+    aside .card{padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)}
+    .featured{display:grid;grid-template-columns:repeat(1,1fr);gap:12px;margin-top:12px}
+    .f-card{display:flex;gap:12px;align-items:center;padding:8px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);cursor:pointer;border:1px solid rgba(255,255,255,0.02)}
+    .f-card img{width:92px;height:64px;object-fit:cover;border-radius:8px;flex-shrink:0}
+    .f-card h4{margin:0;font-size:14px}
+    .f-card .muted{font-size:12px;color:var(--muted)}
 
-    /* ========== Listings controls & grid ========== */
-    .controls{display:flex;gap:12px;align-items:center;margin:22px 0}
-    .select, .sort{padding:10px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:inherit}
+    /* ---------- CONTROLS & GRID ---------- */
+    .controls{display:flex;gap:12px;align-items:center;margin:20px 0}
+    .select, .sort, .input{padding:10px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:inherit;min-width:150px}
     .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .project-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;padding:12px;border:1px solid rgba(255,255,255,0.03);cursor:pointer;transition:transform .18s, box-shadow .18s}
+    .project-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(4,16,32,0.6)}
+    .project-card img{height:160px;object-fit:cover;border-radius:10px;margin-bottom:10px}
+    .project-card h3{margin:0 0 6px}
+    .project-card .meta{color:var(--muted);font-size:13px}
+    .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .tag{padding:6px 8px;background:rgba(255,255,255,0.02);border-radius:999px;font-size:12px;color:var(--muted)}
 
-    /* ========== Project detail panel (drawer) ========== */
-    .drawer{position:fixed;right:0;top:0;height:100vh;width:440px;background:linear-gradient(180deg,#071022, #04101a);box-shadow:-20px 0 40px rgba(0,0,0,0.6);transform:translateX(110%);transition:transform .28s;z-index:60;padding:22px;overflow:auto}
+    /* ---------- DRAWER (DETAIL PANEL) ---------- */
+    .drawer{position:fixed;right:0;top:0;height:100vh;width:480px;background:linear-gradient(180deg,#071022, #04101a);box-shadow:-30px 0 60px rgba(0,0,0,0.6);transform:translateX(110%);transition:transform .28s;z-index:90;padding:22px;overflow:auto;border-left:1px solid rgba(255,255,255,0.02)}
     .drawer.open{transform:translateX(0)}
-    .buy-row{display:flex;gap:8px;margin-top:10px}
-    .btn{padding:10px 12px;border-radius:10px;border:none;cursor:pointer}
-    .btn-primary{background:linear-gradient(90deg,#06b6d4,#3b82f6);color:#032235}
+    .drawer h3{margin:0}
+    .drawer img{width:100%;height:220px;object-fit:cover;border-radius:10px;margin:12px 0}
+    .buy-row{display:flex;gap:10px;margin-top:12px}
+    .btn{padding:10px 12px;border-radius:10px;border:none;cursor:pointer;font-weight:700}
+    .btn-primary{background:linear-gradient(90deg,var(--accent2),var(--accent1));color:#02201d}
     .btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
 
-    /* ========== About, Testimonials, FAQ, Contact ========== */
+    /* ---------- ABOUT / CONTACT ---------- */
     .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .testimonial{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent); padding:12px;border-radius:10px}
-
-    /* ========== Footer ========== */
-    footer{margin-top:36px;padding:24px 0;color:var(--muted)}
-
-    /* ========== Responsive ========== */
-    @media (max-width:980px){.hero{grid-template-columns:1fr}.featured{grid-template-columns:repeat(2,1fr)} .projects-grid{grid-template-columns:repeat(2,1fr)} .drawer{width:100%}}
-    @media (max-width:620px){.featured{grid-template-columns:1fr}.projects-grid{grid-template-columns:1fr} nav a{display:none}}
-
-    /* ========== Small UI niceties ========== */
+    .testimonial{padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:1px solid rgba(255,255,255,0.02)}
     .muted{color:var(--muted)}
-    .price{font-weight:700}
-    .pill-active{background:linear-gradient(90deg,#10b981,#06b6d4);color:#01201b}
-    .badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:12px;background:rgba(255,255,255,0.03)}
 
+    /* ---------- FOOTER ---------- */
+    footer{margin-top:36px;padding:24px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02)}
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width:1100px){.hero{grid-template-columns:1fr}.projects-grid{grid-template-columns:repeat(2,1fr)}.drawer{width:100%}}
+    @media (max-width:720px){nav a{display:none}.projects-grid{grid-template-columns:1fr}.featured{grid-template-columns:1fr}.nav{padding:10px}.hero{gap:18px}}
   </style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <div class="brand">
-        <div class="logo">PX</div>
-        <div>
-          <div style="font-weight:700">ProjexLab</div>
-          <div style="font-size:12px;color:var(--muted)">Final-year projects marketplace</div>
+  <div class="container">
+    <!-- NAV -->
+    <header>
+      <div class="nav" role="navigation" aria-label="Main navigation">
+        <div class="brand">
+          <div class="logo">PX</div>
+          <div>
+            <h1 style="font-size:16px;margin:0;">ProjexLab</h1>
+            <div style="font-size:12px;color:var(--muted)">Final-year projects marketplace</div>
+          </div>
         </div>
+
+        <nav style="display:flex;align-items:center;gap:12px">
+          <a href="#home" onclick="scrollToSection('home')">Home</a>
+          <a href="#projects" onclick="scrollToSection('projects')">Projects</a>
+          <a href="#about" onclick="scrollToSection('about')">About</a>
+          <a href="#contact" onclick="scrollToSection('contact')">Contact</a>
+          <button class="cta" onclick="window.open(buyForm,'_blank')">Buy Projects</button>
+        </nav>
       </div>
+    </header>
 
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-        <a class="cta" href="#projects">Buy Projects</a>
-      </nav>
-    </div>
-  </header>
+    <!-- HERO + ASIDE -->
+    <main>
+      <section id="home" class="hero" aria-labelledby="home-heading" style="margin-top:18px">
+        <div class="hero-card">
+          <h2 id="home-heading">Buy Final-Year Projects — Ready-made & Custom</h2>
+          <p>Choose from vetted projects across AI, ML, IoT, Web, Cloud, Cybersecurity, Android, and more. Each purchase includes full source code, PPT, report, demo video and setup guide.</p>
 
-  <main class="container">
-    <!-- HERO -->
-    <section id="home" class="hero">
-      <div class="hero-card">
-        <h1>Buy Final-Year Projects — Ready-made & Custom</h1>
-        <p>Choose from vetted projects across AI, ML, IoT, Web, Cloud, Cybersecurity, Android, and more. Each purchase includes full source code, report, PPT and setup guide.</p>
+          <div class="searchbar" style="margin-bottom:12px">
+            <input id="globalSearch" placeholder="Search projects, tags or tech (press / to focus)" aria-label="Search projects" />
+            <button id="searchBtn" class="btn btn-primary">Search</button>
+          </div>
 
-        <div class="searchbar">
-          <input id="globalSearch" placeholder="Search projects, tags or tech (e.g. Django, IoT)..."/>
-          <button class="btn btn-primary" id="searchBtn">Search</button>
+          <div class="pill-row" id="categoryPills" aria-hidden="false"></div>
+
+          <div style="margin-top:14px;display:flex;gap:10px;align-items:center">
+            <div style="padding:6px 10px;border-radius:8px;background:rgba(255,255,255,0.02);font-size:13px">Fast Delivery</div>
+            <div style="padding:6px 10px;border-radius:8px;background:rgba(255,255,255,0.02);font-size:13px">Reports Included</div>
+            <div style="padding:6px 10px;border-radius:8px;background:rgba(255,255,255,0.02);font-size:13px">Student Friendly</div>
+          </div>
         </div>
 
-        <div class="pill-row" id="categoryPills"></div>
+        <aside>
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <h3 style="font-size:15px;margin:0">Featured Projects <span class="muted" id="featuredCount"></span></h3>
+              <div class="muted" style="font-size:13px">Curated picks</div>
+            </div>
+            <div class="featured" id="featuredList"></div>
+          </div>
 
-        <div style="margin-top:16px;display:flex;gap:12px;align-items:center">
-          <div class="badge">Fast Delivery</div>
-          <div class="badge">Reports Included</div>
-          <div class="badge">Student Friendly</div>
-        </div>
-      </div>
+          <div style="margin-top:12px" class="card">
+            <h4 style="margin:0 0 8px">Why ProjexLab?</h4>
+            <ul class="muted" style="padding-left:18px;margin:6px 0">
+              <li>Unique & tested projects</li>
+              <li>Fast delivery & setup support</li>
+              <li>Complete deliverables: code, report, PPT, video</li>
+              <li>Request custom projects</li>
+            </ul>
+          </div>
+        </aside>
+      </section>
 
-      <aside>
-        <div class="card" style="width:100%">
-          <h3 style="display:flex;justify-content:space-between;align-items:center">Featured Projects <span class="muted" id="featuredCount"> </span></h3>
-          <div class="featured" id="featuredList"></div>
-        </div>
+      <!-- CONTROLS -->
+      <section id="projects" style="margin-top:18px">
+        <div class="controls" role="region" aria-label="Filters">
+          <select id="filterCategory" class="select">
+            <option value="all">All Categories</option>
+          </select>
 
-        <div style="margin-top:12px" class="card">
-          <h4>Why ProjexLab?</h4>
-          <ul class="muted" style="padding-left:18px;margin:6px 0">
-            <li>Unique & tested projects</li>
-            <li>Fast delivery & setup support</li>
-            <li>Complete deliverables: code, report, PPT, video</li>
-            <li>Request custom projects</li>
-          </ul>
-        </div>
-      </aside>
-    </section>
+          <select id="sortBy" class="sort">
+            <option value="newest">Newest</option>
+            <option value="trending">Trending</option>
+            <option value="price-asc">Price: Low → High</option>
+            <option value="price-desc">Price: High → Low</option>
+          </select>
 
-    <!-- PROJECTS CONTROLS -->
-    <section id="projects">
-      <div class="controls">
-        <select id="filterCategory" class="select">
-          <option value="all">All Categories</option>
-        </select>
-        <select id="sortBy" class="sort">
-          <option value="newest">Newest</option>
-          <option value="trending">Trending</option>
-          <option value="price-asc">Price: Low → High</option>
-          <option value="price-desc">Price: High → Low</option>
-        </select>
-        <input id="tagFilter" placeholder="Filter tag (e.g. IEEE, Unique)"/>
-        <div style="margin-left:auto;color:var(--muted)" id="resultsInfo"></div>
-      </div>
+          <input id="tagFilter" placeholder="Filter tag (e.g. IEEE, Unique)" class="input" />
 
-      <div class="projects-grid" id="projectsGrid"></div>
-
-      <div style="display:flex;justify-content:center;margin-top:18px;gap:8px" id="pagination"></div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" style="margin-top:28px">
-      <h2>About ProjexLab</h2>
-      <div class="two-col" style="margin-top:12px">
-        <div>
-          <p class="muted">ProjexLab started as a meetup of students who wanted high-quality, exam-ready projects. Our mission is to make final-year projects accessible, unique, and delivered with full documentation so students can learn and present with confidence.</p>
-
-          <h4>Mission & Vision</h4>
-          <p class="muted">Deliver project solutions that teach, not just copy — and help students build a portfolio they can be proud of.</p>
-        </div>
-        <div>
-          <h4>Testimonials</h4>
-          <div class="testimonial">“ProjexLab saved our semester — the code was clean and the report helped us secure an A.” — <strong>Riya, CSE</strong></div>
-          <div class="testimonial" style="margin-top:8px">“Custom project matched our idea perfectly.” — <strong>Rahul, ECE</strong></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" style="margin-top:28px">
-      <h2>Contact</h2>
-      <div class="two-col" style="margin-top:12px">
-        <div>
-          <h4>Get in touch</h4>
-          <p class="muted">Email: hello@projexlab.org<br/>Phone: +91 90000 00000</p>
-
-          <h4>WhatsApp</h4>
-          <p><a id="waLink" href="#" target="_blank">Chat on WhatsApp</a></p>
-
-          <h4>Social</h4>
-          <p class="muted"> <a href="#">GitHub</a> · <a href="#">LinkedIn</a></p>
+          <div style="margin-left:auto;color:var(--muted)" id="resultsInfo" aria-live="polite"></div>
         </div>
 
-        <div>
-          <h4>Contact form</h4>
-          <form id="contactForm">
-            <input id="cname" placeholder="Your name" style="width:100%;padding:10px;border-radius:8px;margin-bottom:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" required />
-            <input id="cemail" type="email" placeholder="Your email" style="width:100%;padding:10px;border-radius:8px;margin-bottom:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" required />
-            <textarea id="cmessage" placeholder="Message" style="width:100%;padding:10px;border-radius:8px;margin-bottom:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" required></textarea>
-            <button class="btn btn-primary" type="submit">Send</button>
-          </form>
+        <div class="projects-grid" id="projectsGrid" aria-live="polite"></div>
+
+        <div style="display:flex;justify-content:center;margin-top:18px;gap:8px" id="pagination"></div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about" style="margin-top:28px">
+        <h2>About ProjexLab</h2>
+        <div class="two-col" style="margin-top:12px">
+          <div>
+            <p class="muted">ProjexLab started as a meetup of students who wanted high-quality, exam-ready projects. Our mission: make final-year projects accessible, unique, and delivered with full documentation so students can learn and present with confidence.</p>
+
+            <h4>Mission & Vision</h4>
+            <p class="muted">Deliver project solutions that teach, not just copy — and help students build a portfolio they can be proud of.</p>
+          </div>
+          <div>
+            <h4>Testimonials</h4>
+            <div class="testimonial">“ProjexLab saved our semester — the code was clean and the report helped us secure an A.” — <strong>Riya, CSE</strong></div>
+            <div class="testimonial" style="margin-top:8px">“Custom project matched our idea perfectly.” — <strong>Rahul, ECE</strong></div>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div style="margin-top:18px" class="card">
-        <h4>FAQ</h4>
-        <div class="muted">Q: Do you provide reports and PPT?<br/><strong>A:</strong> Yes — every project includes source code, PPT, report, demo video and setup guide.</div>
-      </div>
-    </section>
+      <!-- CONTACT -->
+      <section id="contact" style="margin-top:28px">
+        <h2>Contact</h2>
+        <div class="two-col" style="margin-top:12px">
+          <div>
+            <h4>Get in touch</h4>
+            <p class="muted">
+              Phone: <a href="tel:+919063228334">+91 9063228334</a><br>
+              WhatsApp Group: <a href="https://chat.whatsapp.com/BhR9eyM1DiTABNYKGeEfjV" target="_blank" rel="noopener">Join</a><br>
+              Email: <a href="mailto:hello@projexlab.org">projexlaborg@gmail.com</a>
+            </p>
 
-    <footer>
-      <div style="display:flex;justify-content:space-between;align-items:center">
-        <div class="muted">© ProjexLab 2025</div>
-        <div class="muted">Built with ❤️ for students</div>
-      </div>
-    </footer>
-  </main>
+            <h4>Social</h4>
+            <p class="muted">
+              <a href="https://www.instagram.com/projexlaborg?igsh=MWVhZnFteTdiNHFv" target="_blank" rel="noopener">Instagram</a> ·
+              <a href="https://www.linkedin.com/in/projexlab-org-490184392?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener">LinkedIn</a>
+            </p>
+          </div>
 
-  <!-- Drawer for project details -->
+          <div>
+            <h4>Contact form</h4>
+            <form id="contactForm" aria-label="Contact form">
+              <input id="cname" placeholder="Your name" style="width:100%;padding:10px;border-radius:8px;margin-bottom:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" required />
+              <input id="cemail" type="email" placeholder="Your email" style="width:100%;padding:10px;border-radius:8px;margin-bottom:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" required />
+              <textarea id="cmessage" placeholder="Message" style="width:100%;padding:10px;border-radius:8px;margin-bottom:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" required></textarea>
+              <div style="display:flex;gap:8px">
+                <button class="btn btn-primary" type="submit">Send</button>
+                <a class="btn btn-outline" href="https://docs.google.com/forms/d/e/1FAIpQLScGKXamBRVdV8rknUK5ZAVi3leozDpLT3nH3q_M5NWu-rqXbQ/viewform?usp=dialog" target="_blank" rel="noopener">Order via Form</a>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div style="margin-top:18px" class="card">
+          <h4>FAQ</h4>
+          <div class="muted">Q: Do you provide reports and PPT?<br><strong>A:</strong> Yes — every project includes source code, PPT, report, demo video and setup guide.</div>
+        </div>
+      </section>
+
+      <footer>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:26px">
+          <div class="muted">© ProjexLab 2025</div>
+          <div class="muted">Built with ❤️ for students</div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- DRAWER -->
   <div id="drawer" class="drawer" aria-hidden="true">
     <div style="display:flex;justify-content:space-between;align-items:center">
       <div>
@@ -227,9 +251,10 @@
       <button id="closeDrawer" class="btn btn-outline">Close</button>
     </div>
 
-    <div style="margin-top:8px">
-      <img id="d-cover" src="" alt="cover" style="height:200px;object-fit:cover;border-radius:8px;margin-bottom:8px"/>
+    <div>
+      <img id="d-cover" src="" alt="cover" />
       <p id="d-short" class="muted"></p>
+
       <h4>Abstract</h4>
       <p id="d-abstract" class="muted"></p>
 
@@ -255,7 +280,7 @@
         </div>
         <div class="buy-row">
           <button id="buyNow" class="btn btn-primary">Buy Now</button>
-          <button id="requestCustom" class="btn btn-outline">Request Custom Project</button>
+          <button id="requestCustom" class="btn btn-outline">Request Custom</button>
         </div>
       </div>
 
@@ -266,20 +291,27 @@
     </div>
   </div>
 
+  <!-- ========== SCRIPTS & DATA ========== -->
   <script>
-    // ========= Mock Data =========
+    // ---------- Config (user-supplied links / contact) ----------
+    const phone = '+919063228334'; // user's phone
+    const waGroup = 'https://chat.whatsapp.com/BhR9eyM1DiTABNYKGeEfjV';
+    const insta = 'https://www.instagram.com/projexlaborg?igsh=MWVhZnFteTdiNHFv';
+    const linkedin = 'https://www.linkedin.com/in/projexlab-org-490184392?utm_source=share_via&utm_content=profile&utm_medium=member_android';
+    const buyForm = 'https://docs.google.com/forms/d/e/1FAIpQLScGKXamBRVdV8rknUK5ZAVi3leozDpLT3nH3q_M5NWu-rqXbQ/viewform?usp=dialog';
+
+    // ---------- Demo PROJECT DATA ----------
     const PROJECTS = [
-      {id:1,title:'Smart Attendance with Face Recognition',category:'AI',short:'Face recognition attendance system with Flask and OpenCV.',abstract:'A full system that uses face embeddings to detect and mark attendance. Includes Flask backend, SQLite DB, and admin dashboard.',features:['Face detection','Face embedding','Admin dashboard','Export CSV'],tech:['Python','OpenCV','Flask','SQLite'],price:1200,tags:['Unique','Mini Project'],cover:'https://picsum.photos/seed/p1/800/450',featured:true,created:'2025-09-02',trend:9},
-      {id:2,title:'IoT-based Smart Irrigation',category:'IoT',short:'Automated irrigation using soil moisture and ESP32.',abstract:'Uses ESP32, sensors and cloud dashboard to control irrigation. Includes hardware wiring, code, and cloud integration.',features:['Soil sensing','MQTT','Cloud dashboard'],tech:['C++','ESP32','MQTT','Firebase'],price:1800,tags:['Major Project','IEEE'],cover:'https://picsum.photos/seed/p2/800/450',featured:true,created:'2025-07-12',trend:7},
-      {id:3,title:'E-Commerce Website with React & Node',category:'Web',short:'Full-stack e-commerce with payments and admin panel.',abstract:'React frontend, Node/Express backend, MongoDB, JWT auth, payment integration and admin product management.',features:['User auth','Payments','Admin panel','Product search'],tech:['React','Node.js','MongoDB'],price:2000,tags:['Trending','Major Project'],cover:'https://picsum.photos/seed/p3/800/450',featured:true,created:'2025-10-05',trend:12},
-      {id:4,title:'Malware Detection using ML',category:'Cybersecurity',short:'Classify malicious binaries with ML features.',abstract:'Feature extraction from binaries and classification using RandomForest and explainability.',features:['Feature extraction','Model training','Confusion matrix'],tech:['Python','scikit-learn'],price:1500,tags:['IEEE','Unique'],cover:'https://picsum.photos/seed/p4/800/450',featured:false,created:'2025-08-01',trend:6},
-      {id:5,title:'Android Chat App with Socket.IO',category:'Android',short:'Real-time chat app with group support and media sharing.',abstract:'Kotlin-based app using Socket.IO and Node.js backend for real-time messaging and push notifications.',features:['Real-time chat','Media sharing','Groups'],tech:['Kotlin','Socket.IO','Node.js'],price:1000,tags:['Mini Project'],cover:'https://picsum.photos/seed/p5/800/450',featured:false,created:'2025-05-15',trend:5},
-      // ... add more projects as needed for demo
+      {id:1,title:'Smart Attendance with Face Recognition',category:'AI',short:'Face recognition attendance system with Flask and OpenCV.',abstract:'Full system with embeddings, Flask backend and admin dashboard. Easy setup instructions included.',features:['Face detection','Face embeddings','Admin dashboard','CSV export'],tech:['Python','OpenCV','Flask','SQLite'],price:1200,tags:['Unique','Mini Project'],cover:'https://picsum.photos/seed/p1/1200/720',featured:true,created:'2025-09-02',trend:9},
+      {id:2,title:'IoT Smart Irrigation',category:'IoT',short:'Automated irrigation using soil moisture sensors and ESP32.',abstract:'ESP32 + sensors + MQTT + cloud dashboard. Includes wiring diagrams and code.',features:['Soil sensing','MQTT','Cloud dashboard'],tech:['C++','ESP32','MQTT','Firebase'],price:1800,tags:['Major Project','IEEE'],cover:'https://picsum.photos/seed/p2/1200/720',featured:true,created:'2025-07-12',trend:7},
+      {id:3,title:'E-Commerce MERN Website',category:'Web',short:'Full-stack e-commerce with payments and admin panel.',abstract:'React frontend, Node/Express backend, MongoDB, JWT auth and admin product management.',features:['User auth','Payments','Admin panel','Search'],tech:['React','Node.js','MongoDB'],price:2000,tags:['Trending','Major Project'],cover:'https://picsum.photos/seed/p3/1200/720',featured:true,created:'2025-10-05',trend:12},
+      {id:4,title:'Malware Detection using ML',category:'Cybersecurity',short:'Classify malicious binaries with ML features.',abstract:'Feature extraction from binaries and classification using RandomForest with explainability.',features:['Feature extraction','Model training','Evaluation'],tech:['Python','scikit-learn'],price:1500,tags:['IEEE','Unique'],cover:'https://picsum.photos/seed/p4/1200/720',featured:false,created:'2025-08-01',trend:6},
+      {id:5,title:'Android Chat App with Socket.IO',category:'Android',short:'Real-time chat with media sharing and groups.',abstract:'Kotlin app using Socket.IO and Node.js backend for real-time messaging and push.',features:['Real-time chat','Media sharing','Groups'],tech:['Kotlin','Socket.IO','Node.js'],price:1000,tags:['Mini Project'],cover:'https://picsum.photos/seed/p5/1200/720',featured:false,created:'2025-05-15',trend:5}
     ];
 
     const CATEGORIES = ['AI','ML','IoT','Web','Cloud','Cybersecurity','Android','Blockchain'];
 
-    // ========= Init UI =========
+    // ---------- UI REFERENCES ----------
     const categoryPills = document.getElementById('categoryPills');
     const featuredList = document.getElementById('featuredList');
     const featuredCount = document.getElementById('featuredCount');
@@ -290,51 +322,50 @@
     const tagFilter = document.getElementById('tagFilter');
     const resultsInfo = document.getElementById('resultsInfo');
     const paginationEl = document.getElementById('pagination');
+    const drawer = document.getElementById('drawer');
+    const closeDrawer = document.getElementById('closeDrawer');
 
-    // Populate categories
+    // ---------- Populate categories & featured ----------
     CATEGORIES.forEach(cat=>{
-      const b = document.createElement('div'); b.className='pill'; b.textContent=cat; b.dataset.cat=cat; categoryPills.appendChild(b);
-
-      const o = document.createElement('option'); o.value = cat; o.textContent = cat; filterCategory.appendChild(o);
-
-      b.addEventListener('click',()=>{
-        document.querySelectorAll('.pill').forEach(p=>p.classList.remove('pill-active'));
-        b.classList.add('pill-active');
+      // pill
+      const p = document.createElement('div'); p.className='pill'; p.textContent = cat; p.dataset.cat=cat;
+      p.addEventListener('click',()=>{
+        document.querySelectorAll('.pill').forEach(x=>x.classList.remove('pill-active'));
+        p.classList.add('pill-active');
         filterCategory.value = cat;
-        renderProjects();
+        STATE.page = 1; renderProjects();
       });
+      categoryPills.appendChild(p);
+
+      // select option
+      const o = document.createElement('option'); o.value = cat; o.textContent = cat; filterCategory.appendChild(o);
     });
 
-    // Featured
+    // featured
     const featured = PROJECTS.filter(p=>p.featured);
     featuredCount.textContent = `(${featured.length})`;
     featured.forEach(p=>{
-      const el = document.createElement('div'); el.className='card';
-      el.innerHTML = `<img src="${p.cover}" style="height:120px;object-fit:cover;border-radius:8px"/><h3>${p.title}</h3><div class="meta">${p.short}</div><div class="tags">${p.tags.map(t=>`<div class='tag'>${t}</div>`).join('')}</div>`;
+      const el = document.createElement('div'); el.className='f-card';
+      el.innerHTML = `<img src="${p.cover}" alt=""><div><h4>${p.title}</h4><div class="muted">${p.short}</div></div>`;
       el.addEventListener('click',()=>openDrawer(p.id));
       featuredList.appendChild(el);
     });
 
-    // ========== Search, Filter, Sort, Pagination logic =========
+    // ---------- STATE & FILTER LOGIC ----------
     let STATE = {q:'',category:'all',tag:'',sort:'newest',page:1,perPage:6};
 
     function applyFilters(){
       let res = PROJECTS.slice();
-      // category
-      if(STATE.category && STATE.category!=='all') res = res.filter(p=>p.category === STATE.category);
-      // tag
+      if(STATE.category && STATE.category!=='all') res = res.filter(p=>p.category===STATE.category);
       if(STATE.tag) res = res.filter(p=>p.tags.join(' ').toLowerCase().includes(STATE.tag.toLowerCase()));
-      // query
-      if(STATE.q) {
+      if(STATE.q){
         const q = STATE.q.toLowerCase();
-        res = res.filter(p=> (p.title+p.short+p.abstract+p.tech.join(' ') + p.tags.join(' ')).toLowerCase().includes(q));
+        res = res.filter(p=> (p.title + ' ' + p.short + ' ' + p.abstract + ' ' + p.tech.join(' ') + ' ' + p.tags.join(' ')).toLowerCase().includes(q));
       }
-      // sort
-      if(STATE.sort === 'newest') res.sort((a,b)=> new Date(b.created) - new Date(a.created));
-      if(STATE.sort === 'trending') res.sort((a,b)=> b.trend - a.trend);
-      if(STATE.sort === 'price-asc') res.sort((a,b)=> a.price - b.price);
-      if(STATE.sort === 'price-desc') res.sort((a,b)=> b.price - a.price);
-
+      if(STATE.sort==='newest') res.sort((a,b)=> new Date(b.created) - new Date(a.created));
+      if(STATE.sort==='trending') res.sort((a,b)=> b.trend - a.trend);
+      if(STATE.sort==='price-asc') res.sort((a,b)=> a.price - b.price);
+      if(STATE.sort==='price-desc') res.sort((a,b)=> b.price - a.price);
       return res;
     }
 
@@ -345,16 +376,16 @@
       STATE.sort = sortBy.value;
       const all = applyFilters();
       const total = all.length;
-      const pages = Math.max(1, Math.ceil(total/STATE.perPage));
+      const pages = Math.max(1, Math.ceil(total / STATE.perPage));
       STATE.page = Math.min(STATE.page, pages);
-      const start = (STATE.page-1)*STATE.perPage;
-      const pageItems = all.slice(start, start+STATE.perPage);
+      const start = (STATE.page - 1) * STATE.perPage;
+      const items = all.slice(start, start + STATE.perPage);
 
       projectsGrid.innerHTML = '';
-      pageItems.forEach(p=>{
-        const c = document.createElement('div'); c.className='card';
+      items.forEach(p=>{
+        const c = document.createElement('div'); c.className = 'project-card';
         c.innerHTML = `
-          <img src="${p.cover}" alt="${p.title}" style="height:140px;object-fit:cover;border-radius:8px"/>
+          <img src="${p.cover}" alt="${p.title}">
           <h3>${p.title}</h3>
           <div class="meta">${p.short}</div>
           <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
@@ -369,25 +400,25 @@
       resultsInfo.textContent = `${total} result${total!==1?'s':''}`;
 
       // pagination
-      paginationEl.innerHTML='';
+      paginationEl.innerHTML = '';
       for(let i=1;i<=pages;i++){
-        const b = document.createElement('button'); b.className='btn'; b.textContent=i; if(i===STATE.page) b.style.opacity=0.6; b.addEventListener('click',()=>{STATE.page=i;renderProjects()}); paginationEl.appendChild(b);
+        const b = document.createElement('button'); b.className='btn'; b.textContent = i; if(i===STATE.page) b.style.opacity=0.6;
+        b.addEventListener('click',()=>{ STATE.page = i; renderProjects(); });
+        paginationEl.appendChild(b);
       }
     }
 
-    // Live search
-    let typing;
-    globalSearch.addEventListener('input',()=>{ clearTimeout(typing); typing = setTimeout(()=>{ STATE.page=1; renderProjects() },200)});
-    filterCategory.addEventListener('change',()=>{ STATE.page=1; renderProjects() });
-    sortBy.addEventListener('change',()=>{ STATE.page=1; renderProjects() });
-    tagFilter.addEventListener('input',()=>{ STATE.page=1; renderProjects() });
+    // live inputs
+    let typingTimer;
+    globalSearch.addEventListener('input',()=>{ clearTimeout(typingTimer); typingTimer = setTimeout(()=>{ STATE.page=1; renderProjects() }, 220); });
+    filterCategory.addEventListener('change', ()=>{ STATE.page=1; renderProjects(); });
+    sortBy.addEventListener('change', ()=>{ STATE.page=1; renderProjects(); });
+    tagFilter.addEventListener('input', ()=>{ STATE.page=1; renderProjects(); });
 
     // initial render
     renderProjects();
 
-    // ========= Drawer logic =========
-    const drawer = document.getElementById('drawer');
-    const closeDrawer = document.getElementById('closeDrawer');
+    // ---------- DRAWER (DETAILS) ----------
     function openDrawer(id){
       const p = PROJECTS.find(x=>x.id===id); if(!p) return;
       drawer.classList.add('open'); drawer.setAttribute('aria-hidden','false');
@@ -396,49 +427,60 @@
       document.getElementById('d-cover').src = p.cover;
       document.getElementById('d-short').textContent = p.short;
       document.getElementById('d-abstract').textContent = p.abstract;
-      const f = document.getElementById('d-features'); f.innerHTML = p.features.map(x=>`<li>${x}</li>`).join('');
+      document.getElementById('d-features').innerHTML = p.features.map(x=>`<li>${x}</li>`).join('');
       document.getElementById('d-tech').innerHTML = p.tech.map(t=>`<div class='tag'>${t}</div>`).join('');
       document.getElementById('d-price').textContent = `₹ ${p.price}`;
 
-      // Wire buy / request
-      document.getElementById('buyNow').onclick = ()=>{
-        alert('Thank you — checkout not implemented in demo. Contact us on WhatsApp to complete the purchase.');
-        window.open(getWhatsAppLink(`I'd like to buy project: ${p.title} (ID:${p.id}) - Price: ₹${p.price}`),'_blank');
-      }
-      document.getElementById('requestCustom').onclick = ()=>{
-        window.open(getWhatsAppLink(`I want a custom project — brief:`),'_blank');
-      }
+      document.getElementById('buyNow').onclick = ()=> {
+        // open Google Form with prefilled message via WhatsApp recommendation
+        const msg = `Hi ProjexLab — I want to buy: ${p.title} (ID:${p.id}) — Price: ₹${p.price}`;
+        window.open(getWhatsAppLink(msg), '_blank');
+      };
+      document.getElementById('requestCustom').onclick = ()=> {
+        window.open(getWhatsAppLink(`I want a custom project — brief:`), '_blank');
+      };
     }
-    closeDrawer.addEventListener('click',()=>{ drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true') });
 
-    // ========= Contact form =========
+    closeDrawer.addEventListener('click', ()=>{ drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true') });
+
+    // ---------- CONTACT FORM (demo) ----------
     const contactForm = document.getElementById('contactForm');
-    contactForm.addEventListener('submit', (e)=>{
+    contactForm.addEventListener('submit', (e)=> {
       e.preventDefault();
-      const name = document.getElementById('cname').value; const email = document.getElementById('cemail').value; const msg = document.getElementById('cmessage').value;
-      alert('Message sent (demo). We would normally POST this to a backend.');
+      const name = document.getElementById('cname').value;
+      const email = document.getElementById('cemail').value;
+      const msg = document.getElementById('cmessage').value;
+      alert('Thanks! Message received (demo). We will contact you on WhatsApp or email.');
       console.log({name,email,msg});
       contactForm.reset();
     });
 
-    // ========= WhatsApp helper =========
-    const waLink = document.getElementById('waLink');
+    // ---------- WHATSAPP LINK HELPER ----------
     function getWhatsAppLink(text){
-      const phone = '919000000000';
-      return `https://wa.me/${phone.replace(/\D/g,'')}?text=${encodeURIComponent(text)}`;
+      const num = phone.replace(/\D/g,''); // +919063228334 -> 919063228334
+      return `https://wa.me/${num}?text=${encodeURIComponent(text)}`;
     }
-    waLink.href = getWhatsAppLink('Hello ProjexLab — I have a question about projects.');
+    // set group link anchor (some browsers might block direct wa.me to group)
+    // but we already show group link in contact section
 
-    // ========= Small accessibility hotkeys & demo helpers =========
-    document.addEventListener('keydown',(e)=>{ if(e.key==='/' ){ globalSearch.focus(); e.preventDefault(); } if(e.key==='Escape'){ drawer.classList.remove('open') } });
+    // ---------- NICE KEYBINDINGS ----------
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === '/') { globalSearch.focus(); e.preventDefault(); }
+      if(e.key === 'Escape') { drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); }
+    });
 
-    // ========= Notes =========
-    // This is a single-file demo. For production:
-    // - Split into separate HTML/CSS/JS files
-    // - Hook contact & payment to a backend
-    // - Secure product delivery & licensing
-    // - Add real video embeds and Google Maps iframe if needed
+    // ---------- SMALL SCROLL TO SECTION ----------
+    function scrollToSection(id){
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.scrollIntoView({behavior:'smooth',block:'start'});
+    }
 
+    // Expose some functions globally used by button attributes
+    window.openDrawer = openDrawer;
+    window.getWhatsAppLink = getWhatsAppLink;
+    window.buyForm = buyForm;
+    window.scrollToSection = scrollToSection;
   </script>
 </body>
 </html>
